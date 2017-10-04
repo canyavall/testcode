@@ -1,0 +1,19 @@
+<body ng-app="myApp.view1" ng-controller="driversController">
+  <div ng-style="{width: '550px'}">
+    <table class="table">
+      <thead>
+        <tr><th colspan="4"><H1>Drivers Championship Standings</H1></th></tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="driver in driversList">
+          <td>{{$index + 1}}</td>
+          <td>
+            {{driver.Driver.givenName}}&nbsp;{{driver.Driver.familyName}}
+          </td>
+          <td>{{driver.Constructors[0].name}}</td>
+          <td>{{driver.points}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
