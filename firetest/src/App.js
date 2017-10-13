@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       data: null
+      newData: ''
     }
   }
 
@@ -20,6 +21,18 @@ class App extends Component {
       console.log("data changed", snapshot.val());
     });
   }
+
+  handleSubmit(e) {
+    e.preventDefault();
+  }
+
+  handleChange(e) {
+    const newData = e.target.value;
+    this.setState({
+      newData: newData
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -31,8 +44,12 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <pre className="App-data">
-          { JSON.stringify(this.state.data, null, 2)}
+          { JSON.stringify(this.state.data, null)}
         </pre>
+        <form className="App-form" onSubmit={this.handleSubmit}>
+          <input type="text" onChange={this.handleChange}/>
+          <input type="submit"/>
+        </form>
       </div>
     );
   }
