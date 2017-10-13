@@ -13,8 +13,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    database.ref('/').on('value', () => {
-      console.log("data changed");
+    database.ref('/').on('value', (snapshot) => {
+      this.setState({
+        data: snapshot.val()
+      })
+      console.log("data changed", snapshot.val());
     });
   }
   render() {
@@ -27,6 +30,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <pre className="App-data">
+          { JSON.stringify(this.state.data, null, 2)}
+        </pre>
       </div>
     );
   }
