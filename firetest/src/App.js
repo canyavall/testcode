@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     this.dataRef = database.ref('/')
-
+    //this.dataRef.once('value', (snapshot) => { -> Return a promise
     this.dataRef.on('value', (snapshot) => {
       // console.log('child_added', snapshot.val());
       this.setState({
