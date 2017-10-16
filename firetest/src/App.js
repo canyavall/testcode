@@ -27,8 +27,8 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault();
     database.ref()
-      .child('AMAZINGNEWDATA')
-      .set(this.state.newData)
+      .child('AMAZINGNEWDATA2')
+      .push(this.state.newData)
   }
 
   handleChange(e) {
