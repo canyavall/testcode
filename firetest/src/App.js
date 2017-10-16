@@ -11,24 +11,30 @@ class App extends Component {
       data: null,
       newData: ''
     }
+
+    this.dataRef = null;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
-    database.ref('/').on('value', (snapshot) => {
+    this.dataRef = database.ref('/')
+
+    this.dataRef.on('value', (snapshot) => {
+      // console.log('child_added', snapshot.val());
       this.setState({
         data: snapshot.val()
       })
-      console.log("data changed", snapshot.val());
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    database.ref()
-      .child('AMAZINGNEWDATA2')
-      .push(this.state.newData)
+    // database.ref()
+    //   .child('AMAZINGNEWDATA2')
+    //   .push(this.state.newData)
+    //database.ref('/AMAZINGNEWDATA/testingchild/subtree').push(this.state.newData)
+    this.dataRef.push(this.state.newData)
   }
 
   handleChange(e) {
@@ -49,7 +55,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <pre className="App-data">
-          { JSON.stringify(this.state.data, null)}
+          { JSON.stringify(this.state.data, null, 4)}
         </pre>
         <form className="App-form" onSubmit={this.handleSubmit}>
           <input type="text" value = {this.state.newData} onChange={this.handleChange}/>
