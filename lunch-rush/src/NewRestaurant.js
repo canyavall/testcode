@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import './NewRestaurant.css';
 import { database} from "./firebase";
 
+
 class NewRestaurant extends Component {
   constructor() {
     super();
@@ -15,7 +16,8 @@ class NewRestaurant extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.restaurantsRef.push({name: this.state.name})
+    this.restaurantsRef.push({name: this.state.name});
+    this.setState({'name': ''})
   }
 
   render() {
