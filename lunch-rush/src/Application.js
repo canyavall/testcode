@@ -16,17 +16,26 @@ class Application extends Component {
 
   componentDidMount() {
       auth.onAuthStateChanged((currentUser) => {
-          
+          console.log('AUTH_CHANGE', currentUser)
+          this.setState ({ currentUser })
       })
   }
   render() {
+      const { currentUser } = this.state;
     return (
       <div className="Application">
         <header className="Application--header">
           <h1>Lunch Rush</h1>
         </header>
         <div>
-          <SignIn />
+            { !currentUser && <SignIn /> }
+            { currentUser &&
+                <div>
+                    <NewRestaurant/>
+                    <CurrentUser user = { currentUser} />
+                </div>
+
+            }
         </div>
       </div>
     );
