@@ -9,6 +9,8 @@
     "react-dom": "15.4.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
     "react-scripts": "0.9.2"
   },
   "scripts": {
