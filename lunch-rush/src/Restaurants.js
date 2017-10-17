@@ -39,6 +39,7 @@ class Restaurants extends Component {
                     {...restaurant }
                     handleSelect={()=>this.handleSelect(key)}
                     handleDeselect={() => this.handleDeselect(key)}
+                    user={ this.props.user }
                     />;
           }) }
 
